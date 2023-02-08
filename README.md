@@ -1,1 +1,1 @@
-# littlewords by @adriengmbt 
+# littlewords by @adriengmbt & @NoaWatel
