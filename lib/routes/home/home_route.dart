@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart' ;
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:littlewords/widgets/db/db.helper.dart';
 import 'package:littlewords/widgets/wordcard.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -85,8 +87,11 @@ class _PageB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text("Page B"),
+      child: FutureBuilder(
+        future : DbHelper.findAll(),
+        builder:(context,snapshot){
+          return Placeholder();
+        }
       ),
     );
   }
