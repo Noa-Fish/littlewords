@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' ;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:littlewords/widgets/wordcard.dart';
 
 class HomeRoute extends StatefulWidget {
   const HomeRoute({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _HomeRouteState extends State<HomeRoute> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details'),
+        title: Text('LittleWords'),
       ),
       body: bodies[bottomNavigationIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -54,7 +55,6 @@ class _HomeRouteState extends State<HomeRoute> {
             );
           },
         ) : null,
-
     );
   }
 }
@@ -69,7 +69,7 @@ class _PageA extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("Page A"),
+        child:WordCard(),
 
       ),
     );

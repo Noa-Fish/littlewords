@@ -60,7 +60,6 @@ class SaveUsernameButton extends ConsumerWidget {
 
   void _onPressed(WidgetRef ref){
     var text = controller.text;
-    print('Text: $text');
 
     SharedPreferences.getInstance().then((prefs) {
       prefs.setString('username', text);
