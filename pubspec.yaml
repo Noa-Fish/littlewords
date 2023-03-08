@@ -38,6 +38,7 @@ dependencies:
 
   #Récupération location device
   location: ^4.4.0
+  latlong2: 0.8.1
 
   #permet de faire des appel à l'API
   dio: 5.0.0

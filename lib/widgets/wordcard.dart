@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:littlewords/beans/dto/word.dto.dart';
 
 class WordCard extends StatelessWidget {
-  const WordCard({Key? key}) : super(key: key);
+  const WordCard({Key? key, required this.word}) : super(key: key);
+
+  final WordDTO word;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +30,12 @@ class WordCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text("Maman",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+                Text(word.author ?? "",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
                 Spacer(),
-                Text("01/03/2023",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,)),
+                Text(word.uid.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,)),
               ],
             ),
-          Text("Je t'\aime mon fils",style: TextStyle(fontSize: 20),),
+          Text(word.content ?? "",style: TextStyle(fontSize: 20),),
           ],
         ),
       ),

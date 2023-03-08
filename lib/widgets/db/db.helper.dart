@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 class DbHelper{
   static const String _dbName = 'littlewords.db';
-  static const int _dbVersion = 2;
+  static const int _dbVersion = 3;
 
   static Database? _db;
 
@@ -24,8 +24,8 @@ class DbHelper{
       uid INTEGER PRIMARY KEY NOT NULL,
       author TEXT not null,
       content TEXT not null,
-      latitude REAL not null,
-      longitude REAL not null
+      latitude REAL,
+      longitude REAL 
     )
   ''';
 

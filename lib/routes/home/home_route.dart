@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart' ;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:littlewords/beans/dto/word.dto.dart';
+import 'package:littlewords/routes/home/appbartitle.dart';
+import 'package:littlewords/routes/home/words_around_tab.dart';
 import 'package:littlewords/widgets/db/db.helper.dart';
 import 'package:littlewords/widgets/wordcard.dart';
 
@@ -20,13 +23,13 @@ class _HomeRouteState extends State<HomeRoute> {
   Widget build(BuildContext context) {
 
     final bodies = <Widget>[
-      _PageA(),
+      WordsAroundTab(),
       _PageB(),
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('LittleWords'),
+        title: AppBarTitle(title : 'LittleWords'),
       ),
       body: bodies[bottomNavigationIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -52,8 +55,11 @@ class _HomeRouteState extends State<HomeRoute> {
           builder: (context,ref,child){
             return FloatingActionButton(
               onPressed: () {
+                WordDTO wordDTO = WordDTO(1, 'author', 'content', 1, 2);
+                DbHelper.insert(wordDTO);
+
               },
-              child: const Icon(Icons.arrow_back),
+              child: const Icon(Icons.add),
             );
           },
         ) : null,
@@ -61,22 +67,6 @@ class _HomeRouteState extends State<HomeRoute> {
   }
 }
 
-
-
-class _PageA extends StatelessWidget {
-  _PageA({Key? key}) : super(key: key);
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child:WordCard(),
-
-      ),
-    );
-  }
-}
 
 
 
@@ -90,7 +80,21 @@ class _PageB extends StatelessWidget {
       child: FutureBuilder(
         future : DbHelper.findAll(),
         builder:(context,snapshot){
-          return Placeholder();
+          if (!snapshot.hasData){
+            //On a pas encore le resultat de la requete
+            return const Center(child: CircularProgressIndicator());
+          }
+          final List<WordDTO>? data = snapshot.data;
+          if (data == null || data.isEmpty){
+            //Aucun mot en bdd
+            return const Text('Aucun mot ramassé');
+          }
+          return ListView.builder(
+            itemCount: data.length,
+            itemBuilder:(context,index){
+              return WordCard(word: data[index]);
+            }
+          );
         }
       ),
     );
