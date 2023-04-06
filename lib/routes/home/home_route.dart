@@ -25,13 +25,13 @@ class _HomeRouteState extends State<HomeRoute> {
   Widget build(BuildContext context) {
 
     final bodies = <Widget>[
-      WordsAroundTab(),
-      _PageB(),
+      const WordsAroundTab(),
+      const _PageB(),
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(title : 'LittleWords'),
+        title: const AppBarTitle(title : 'LittleWords'),
       ),
       body: bodies[bottomNavigationIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -41,12 +41,12 @@ class _HomeRouteState extends State<HomeRoute> {
             bottomNavigationIndex = index;
           });
         },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+        items: const <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'A',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.dangerous),
             label: 'B',
           ),
@@ -63,8 +63,6 @@ class _HomeRouteState extends State<HomeRoute> {
                       child: CreateWordModalContent()
                   );
                 });
-                // WordDTO wordDTO = WordDTO(1, 'author', 'content', 1, 2);
-                // DbHelper.insert(wordDTO);
 
               },
               child: const Icon(Icons.add),
@@ -79,7 +77,7 @@ class _HomeRouteState extends State<HomeRoute> {
 
 
 class _PageB extends StatelessWidget {
-  _PageB({Key? key}) : super(key: key);
+  const _PageB({Key? key}) : super(key: key);
 
 
   @override
@@ -89,7 +87,6 @@ class _PageB extends StatelessWidget {
         future : DbHelper.findAll(),
         builder:(context,snapshot){
           if (!snapshot.hasData){
-            //On a pas encore le resultat de la requete
             return const Center(child: CircularProgressIndicator());
           }
           final List<WordDTO>? data = snapshot.data;

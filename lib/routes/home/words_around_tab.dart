@@ -4,8 +4,6 @@ import 'package:littlewords/routes/home/word_around.dart';
 
 import '../../beans/dto/word.dto.dart';
 import '../../providers/words_around.provider.dart';
-import '../../widgets/db/db.helper.dart';
-import '../../widgets/wordcard.dart';
 
 class WordsAroundTab extends ConsumerWidget {
   const WordsAroundTab({
@@ -19,6 +17,7 @@ class WordsAroundTab extends ConsumerWidget {
         .when(data: _whenData, error: _whenError, loading: _whenLoading);
   }
   Widget _whenData(List<WordDTO> words) {
+
     return ListView.builder(
       itemCount: words.length,
       itemBuilder: (context, index) {

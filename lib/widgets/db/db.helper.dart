@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:littlewords/beans/dto/word.dto.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -66,4 +68,11 @@ class DbHelper{
 
     return words;
   }
+
+  /// Supprimer une ligne de la table par son uid
+  static Future<void> delete(String uid) async {
+    await _db!.delete(tableName, where: 'uid = ?', whereArgs: [uid]);
+  }
+
+
 }

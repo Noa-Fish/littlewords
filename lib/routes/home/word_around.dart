@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlewords/beans/dto/one_word.dto.dart';
@@ -33,11 +32,11 @@ class WordAround extends ConsumerWidget {
 
           if (oneWordDTO.data != null) {
             DbHelper.insert(oneWordDTO.data!);
-            SnackBar snackBar = SnackBar(content: Text('Mot ajouté'));
+            SnackBar snackBar = const SnackBar(content: Text('Mot ajouté'));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
           else{
-            SnackBar snackBar = SnackBar(content: Text('Mot déjà ramassé'));
+            SnackBar snackBar = const SnackBar(content: Text('Mot déjà ramassé'));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
 

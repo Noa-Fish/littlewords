@@ -26,15 +26,10 @@ final wordsAroundProvider = FutureProvider<List<WordDTO>>((ref) async {
     if (wordsDTO.data == null) {
       return Future.value([]);
     }
-
-    print(wordsDTO.data!.length.toString());
-
     return Future.value(wordsDTO.data!);
   }, error: (error) {
-    print(error);
     return Future.value([]);
   },loading: (loading) {
-    print('loading');
     return Future.value([]);
   });
 });

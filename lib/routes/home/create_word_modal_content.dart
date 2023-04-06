@@ -9,7 +9,7 @@ import '../../beans/dto/word.dto.dart';
 import '../../providers/words_around.provider.dart';
 
 class CreateWordModalContent extends StatefulWidget {
-  CreateWordModalContent({Key? key}) : super(key: key);
+  const CreateWordModalContent({Key? key}) : super(key: key);
 
   @override
   State<CreateWordModalContent> createState() => _CreateWordModalContentState();
@@ -71,11 +71,11 @@ class _Btn extends ConsumerWidget {
   }
 
   Widget error(error, stackTrace) {
-    return Text('error');
+    return const Text('error');
   }
 
   Widget loading() {
-    return Text('loading');
+    return const Text('loading');
   }
 
   _isTextBlank() {

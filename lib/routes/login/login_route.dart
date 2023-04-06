@@ -16,23 +16,23 @@ class LoginRoute extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children  :  [
-          Spacer(),
+          const Spacer(),
 
-          LittlewordsLogo(),
+          const LittlewordsLogo(),
 
-          Spacer(),
+          const Spacer(),
 
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8 , vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8 , vertical: 16),
             child: TextField(
               controller: _txtController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   fillColor: Colors.red,
                   filled: true),
               ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 8.0,left: 8.0,right: 8.0),
+            padding: const EdgeInsets.only(top: 8.0,left: 8.0,right: 8.0),
             child :SaveUsernameButton(
               controller: _txtController,
             ),
@@ -52,7 +52,7 @@ class SaveUsernameButton extends ConsumerWidget {
     return ElevatedButton(
         onPressed: () => _onPressed(ref),
         style: ElevatedButton.styleFrom(
-          minimumSize: Size.fromHeight(48),
+          minimumSize: const Size.fromHeight(48),
     ),
         child: const Text('Enregistrer Nom'),
     );
