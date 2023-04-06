@@ -7,6 +7,8 @@ import 'package:littlewords/routes/home/words_around_tab.dart';
 import 'package:littlewords/widgets/db/db.helper.dart';
 import 'package:littlewords/widgets/wordcard.dart';
 
+import 'create_word_modal_content.dart';
+
 class HomeRoute extends StatefulWidget {
   const HomeRoute({Key? key}) : super(key: key);
 
@@ -55,8 +57,14 @@ class _HomeRouteState extends State<HomeRoute> {
           builder: (context,ref,child){
             return FloatingActionButton(
               onPressed: () {
-                WordDTO wordDTO = WordDTO(1, 'author', 'content', 1, 2);
-                DbHelper.insert(wordDTO);
+                showModalBottomSheet(context: context, builder: (context){
+                  return Padding(
+                      padding: MediaQuery.of(context).viewInsets,
+                      child: CreateWordModalContent()
+                  );
+                });
+                // WordDTO wordDTO = WordDTO(1, 'author', 'content', 1, 2);
+                // DbHelper.insert(wordDTO);
 
               },
               child: const Icon(Icons.add),
@@ -86,7 +94,6 @@ class _PageB extends StatelessWidget {
           }
           final List<WordDTO>? data = snapshot.data;
           if (data == null || data.isEmpty){
-            //Aucun mot en bdd
             return const Text('Aucun mot ramassé');
           }
           return ListView.builder(
