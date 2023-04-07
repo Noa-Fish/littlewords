@@ -39,9 +39,6 @@ class WordAround extends ConsumerWidget {
             SnackBar snackBar = const SnackBar(content: Text('Mot déjà ramassé'));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
-
-
-
           ref.refresh(wordsAroundProvider);
         });
       },

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:littlewords/providers/my_words_provider.dart';
 import '../../providers/words_around.provider.dart';
 
 class AppBarTitle extends ConsumerWidget {
@@ -10,11 +11,11 @@ class AppBarTitle extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return GestureDetector(
       child: Text(title),
       onTap: () {
           ref.refresh(wordsAroundProvider);
+          ref.refresh(MyWordsProvider);
         }
     );
   }

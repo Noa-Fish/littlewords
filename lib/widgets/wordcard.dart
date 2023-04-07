@@ -47,104 +47,10 @@ class WordCard extends StatelessWidget {
             Text(word.content ?? "", style: const TextStyle(fontSize: 20),),
             const SizedBox(height: 10),
             //si le mot est deja dans la base de donnee locale,
-            //print si le mot est deja dans la base de donnee locale,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) =>
-                            AlertDialog(
-                              title: const Text('Confirmation'),
-                              content: const Text(
-                                  'Voulez-vous vraiment supprimer ce mot?'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text('Non'),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    DbHelper.delete(word.uid.toString());
-                                  },
-                                  child: const Text('Oui'),
-                                ),
-                              ],
-                            ),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+            //print si le mot est deja dans la base de donnee locale
            ],
         ),
       ),
     );
   }
-}
-
-class _Btn extends ConsumerWidget {
-  const _Btn({Key? key , required this.word}) : super(key: key);
-
-  final word ;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-
-    return ref.watch(deviceLocationProvider).when(data: (data) => _whenData(context, data, ref), error: error, loading: loading);
-  }
-
-  Widget _whenData(context, data, ref){
-    return _sendWordOnServer(ref, context, data);
-  }
-
-  Widget error(error, stackTrace) {
-    return const Text('error');
-  }
-
-  Widget loading() {
-    return const Text('loading');
-  }
-
-  _sendWordOnServer(final WidgetRef ref , BuildContext context, LatLng data) async {
-    final String? author =  word.author;
-    final String content = word.content;
-    final double latitude =  data.latitude;
-    final double longitude = data.longitude;
-    var dio = ref.read(dioProvider);
-    dio
-        .post('/word',data:WordDTO(word.uid ,author,content,latitude,longitude))
-        .then((value) => Navigator.of(context).pop())
-        .catchError((error) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Erreur'),
-            content: Text('Erreur lors du jet du mot : $error'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
-    });
-    ref.refresh(wordsAroundProvider);
-  }
-
 }

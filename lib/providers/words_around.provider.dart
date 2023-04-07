@@ -18,7 +18,7 @@ final wordsAroundProvider = FutureProvider<List<WordDTO>>((ref) async {
     final response = await dio.get(
         '/word/around?latitude=${data.value!.latitude}&longitude=${data.value!
             .longitude}');
-
+    print(response);
     var jsonAsString = response.toString();
     var json = jsonDecode(jsonAsString);
 

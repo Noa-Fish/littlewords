@@ -2,12 +2,15 @@ import 'package:flutter/material.dart' ;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlewords/beans/dto/word.dto.dart';
+import 'package:littlewords/providers/my_words_provider.dart';
 import 'package:littlewords/routes/home/appbartitle.dart';
+import 'package:littlewords/routes/home/my_words_tab.dart';
 import 'package:littlewords/routes/home/words_around_tab.dart';
 import 'package:littlewords/widgets/db/db.helper.dart';
 import 'package:littlewords/widgets/wordcard.dart';
 
 import 'create_word_modal_content.dart';
+import 'my_words.dart';
 
 class HomeRoute extends StatefulWidget {
   const HomeRoute({Key? key}) : super(key: key);
@@ -43,11 +46,11 @@ class _HomeRouteState extends State<HomeRoute> {
         },
         items: const <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.map_outlined),
             label: 'A',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.dangerous),
+            icon: Icon(Icons.storage),
             label: 'B',
           ),
         ],
@@ -65,7 +68,7 @@ class _HomeRouteState extends State<HomeRoute> {
                 });
 
               },
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.pin_drop),
             );
           },
         ) : null,
@@ -75,33 +78,18 @@ class _HomeRouteState extends State<HomeRoute> {
 
 
 
-
-class _PageB extends StatelessWidget {
+class _PageB extends ConsumerWidget {
   const _PageB({Key? key}) : super(key: key);
 
-
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: FutureBuilder(
-        future : DbHelper.findAll(),
-        builder:(context,snapshot){
-          if (!snapshot.hasData){
-            return const Center(child: CircularProgressIndicator());
-          }
-          final List<WordDTO>? data = snapshot.data;
-          if (data == null || data.isEmpty){
-            return const Text('Aucun mot ramassé');
-          }
-          return ListView.builder(
-            itemCount: data.length,
-            itemBuilder:(context,index){
-              return WordCard(word: data[index]);
-            }
-          );
-        }
-      ),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.refresh(MyWordsProvider);
+    return const MyWordsTab();
   }
 }
+
+
+
+
+
 

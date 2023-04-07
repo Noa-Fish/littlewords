@@ -55,17 +55,15 @@ class DbHelper{
   /// Récupérer toutes les lignes de la table
   static Future<List<WordDTO>> findAll() async {
     final List<Map<String, Object?>> resultSet = await _db!.query(tableName);
-    if(resultSet.isEmpty){
+    if (resultSet == null || resultSet.isEmpty) {
       return [];
     }
-
     /// convertir chaque ligne du ResultSet en WordDTO
     final List<WordDTO> words = [];
     for (var rs in resultSet) {
       var wordDTO = WordDTO.fromJson(rs);
       words.add(wordDTO);
     }
-
     return words;
   }
 
