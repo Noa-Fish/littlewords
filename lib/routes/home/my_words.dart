@@ -1,17 +1,11 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:littlewords/beans/dto/one_word.dto.dart';
 import 'package:littlewords/providers/my_words_provider.dart';
 import 'package:littlewords/widgets/wordcard.dart';
-
 import '../../beans/dto/word.dto.dart';
 import '../../providers/device_location.provider.dart';
 import '../../providers/dio.provider.dart';
-import '../../providers/words_around.provider.dart';
 import '../../widgets/db/db.helper.dart';
 
 class MyWords extends ConsumerWidget {

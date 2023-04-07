@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlewords/routes/home/my_words.dart';
-import 'package:littlewords/routes/home/word_around.dart';
 
 import '../../beans/dto/word.dto.dart';
 import '../../providers/my_words_provider.dart';
-import '../../providers/words_around.provider.dart';
 
 class MyWordsTab extends ConsumerWidget {
   const MyWordsTab({

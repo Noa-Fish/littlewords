@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:littlewords/beans/dto/word.dto.dart';
-
-import '../providers/device_location.provider.dart';
-import '../providers/dio.provider.dart';
-import '../providers/words_around.provider.dart';
-import 'db/db.helper.dart';
 
 class WordCard extends StatelessWidget {
   const WordCard({Key? key, required this.word}) : super(key: key);

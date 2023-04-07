@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:littlewords/beans/dto/word.dto.dart';
 import 'package:sqflite/sqflite.dart';
 

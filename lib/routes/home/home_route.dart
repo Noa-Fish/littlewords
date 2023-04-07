@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart' ;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:littlewords/beans/dto/word.dto.dart';
 import 'package:littlewords/providers/my_words_provider.dart';
 import 'package:littlewords/routes/home/appbartitle.dart';
 import 'package:littlewords/routes/home/my_words_tab.dart';
 import 'package:littlewords/routes/home/words_around_tab.dart';
-import 'package:littlewords/widgets/db/db.helper.dart';
-import 'package:littlewords/widgets/wordcard.dart';
 
 import 'create_word_modal_content.dart';
-import 'my_words.dart';
 
 class HomeRoute extends StatefulWidget {
   const HomeRoute({Key? key}) : super(key: key);
