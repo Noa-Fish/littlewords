@@ -40,6 +40,7 @@ dependencies:
   location: ^4.4.0
   latlong2: 0.8.1
 
+
   #permet de faire des appel à l'API
   dio: 5.0.0
 
@@ -52,6 +53,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   #Allows data to be stored locally
   shared_preferences: ^2.0.17
+  flutter_map: any
+  flutter_map_location_marker: any
 
 dev_dependencies:
   flutter_test:

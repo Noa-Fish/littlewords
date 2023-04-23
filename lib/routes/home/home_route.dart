@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart' ;
-import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlewords/providers/my_words_provider.dart';
 import 'package:littlewords/routes/home/appbartitle.dart';
@@ -41,11 +40,11 @@ class _HomeRouteState extends State<HomeRoute> {
           });
         },
         items: const <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.map_outlined),
             label: 'A',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.storage),
             label: 'B',
           ),
@@ -59,7 +58,7 @@ class _HomeRouteState extends State<HomeRoute> {
                 showModalBottomSheet(context: context, builder: (context){
                   return Padding(
                       padding: MediaQuery.of(context).viewInsets,
-                      child: CreateWordModalContent()
+                      child: const CreateWordModalContent()
                   );
                 });
 

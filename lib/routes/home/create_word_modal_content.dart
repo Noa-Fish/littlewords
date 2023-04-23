@@ -6,7 +6,6 @@ import 'package:littlewords/providers/dio.provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../beans/dto/word.dto.dart';
-import '../../providers/words_around.provider.dart';
 
 class CreateWordModalContent extends StatefulWidget {
   const CreateWordModalContent({Key? key}) : super(key: key);
@@ -94,6 +93,5 @@ class _Btn extends ConsumerWidget {
     dio
         .post('/word',data:WordDTO(null,author,content,latitude,longitude))
         .then((value) => Navigator.of(context).pop());
-    ref.refresh(wordsAroundProvider);
   }
 }

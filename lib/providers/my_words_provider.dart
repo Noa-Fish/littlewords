@@ -5,8 +5,8 @@ import '../widgets/db/db.helper.dart';
 final MyWordsProvider = FutureProvider<List<WordDTO>>((ref) async {
   final response = await DbHelper.findAll();
 
-  for (var i = 0; i < response!.length; i++) {
-    if (response[i] == null) {
+  for (var i = 0; i < response.length;) {
+    if (response[i].uid == null) {
       return Future.value([]);
     }
     return Future.value(response);
